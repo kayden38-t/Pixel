@@ -1,0 +1,55 @@
+body{
+    font-family: poppins;
+}
+
+.container{
+    width: 70%; /* Make the container 60% of the viewport width */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add some padding inside the container */
+    
+
+}
+.create_acc_text{
+    text-align: center;
+
+}
+label {
+    margin-bottom: px; 
+    display: inline-block; 
+}
+
+button{
+    border: 1px ;
+    margin-top: 10px;
+    width: 100%;
+    height: 36px;
+    color: white;
+    background-color: rgb(0, 183, 0);
+    border-radius: 6px;
+}
+.or_{
+    text-align: center;
+}
+.signin_options {
+    display: flex;
+    justify-content: space-around;
+}
+.dont_{
+    text-align: center;
+}
+
+.checkbox{
+    width: 100%;
+}
+.H{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+.message-box {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid red;
+    background-color: #ffe6e6; /* Light red background */
+    border-radius: 5px;
+}
