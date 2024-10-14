@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
 
 // Firebase configuration
 const firebaseConfig = {
@@ -14,10 +14,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app); // Initialize Firebase Auth
+const googleProvider = new GoogleAuthProvider(); // Initialize Google provider
 
 const loginForm = document.querySelector('form'); // Select the form element
 const messageBox = document.getElementById('message-box'); // Get the message box
 
+// Sign in with Email and Password
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault(); // Prevent the default form submission
 
@@ -38,6 +40,27 @@ loginForm.addEventListener('submit', (e) => {
             const errorMessage = error.message;
             displayMessage(errorMessage); // Show error message in the message box
         });
+});
+
+// Handle Google Sign-In
+const googleSignInButton = document.getElementById('google-signin');
+googleSignInButton.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent the default link behavior
+
+    signInWithPopup(auth, googleProvider)
+        .then((result) => {
+            const user = result.user; // Get the signed-in user
+            window.location.href = "../Home_page/home_page.html"; // Redirect to home page
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            displayMessage(`Google Sign-In Error: ${errorMessage}`); // Show error message
+        });
+});
+const facebookSignInButton = document.getElementById('facebook-signin');
+facebookSignInButton.addEventListener('click', (e) => {
+    e.preventDefault(); // Prevent the default link behavior
+    displayMessage("Authorization failed. Please try another sign-in method."); // Display custom error message
 });
 
 // Function to display messages in the message box
