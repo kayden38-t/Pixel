@@ -1,0 +1,156 @@
+/* General Styles */
+html, body {
+    height: 100%; 
+    margin: 0; /* Remove default margin */
+    font-family: sans-serif;
+    text-align: center;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+/* Game Container */
+#game-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 60px; /* Space for header */
+}
+
+/* Rock Element */
+#rock {
+    width: 700px;
+    height: 700px;
+    background-image: url('images/rock.png');
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    transition: width 0.3s, height 0.3s; /* Smooth scaling */
+}
+
+/* Sparkle Animation */
+.sparkle {
+    position: absolute;
+    top: 40%; /* Centered on the rock */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    animation: sparkle 0.5s ease-in-out;
+    background-size: cover;
+    opacity: 0;
+}
+
+/* Different Sparkle Levels */
+.sparkle-level-1 {
+    background-image: url('images/gold-sparkle.png'); 
+}
+.sparkle-level-2 {
+    background-image: url('images/blue-sparkle.jpeg'); 
+}
+.sparkle-level-3 {
+    background-image: url('images/red-sparkle.jpeg'); 
+}
+
+/* Sparkle Keyframes */
+@keyframes sparkle {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.2; }
+}
+
+/* Header */
+h1 {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 20px;
+    font-size: 24px; /* Adjusted for mobile */
+    color: #333;
+}
+
+/* Gold and Points Display */
+#gold-and-points-display {
+    position: absolute;
+    top: 20%; /* Adjust this value to position it above the rock */
+    left: 50%;
+    transform: translateX(-50%); /* Centering horizontally */
+    z-index: 10;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center; /* Center text */
+    width: 80%; /* Scales better on small screens */
+    max-width: 300px;
+}
+
+
+ 
+/* Paragraph Styling */
+p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Buttons */
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 90%; /* Full width on mobile */
+    max-width: 300px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Upgrade and Withdraw Buttons */
+#upgrade-pickaxe {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 45%; /* Share space with withdraw button */
+}
+#withdraw {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 45%; /* Share space with upgrade button */
+}
+
+/* Media Queries for Mobile Screens */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 20px; /* Smaller font on mobile */
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    #rock {
+        width: 200px; /* Smaller rock */
+        height: 200px;
+    }
+
+    .sparkle {
+        width: 60px; /* Smaller sparkles */
+        height: 60px;
+    }
+
+    #gold-and-points-display {
+        font-size: 16px;
+        top: 80px; /* Adjusted for smaller screens */
+    }
+}
