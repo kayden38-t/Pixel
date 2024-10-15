@@ -1,10 +1,10 @@
 /* General Styles */
 html, body {
     height: 100%; 
-    margin: 0; /* Remove default margin */
+    margin: 0; 
     font-family: sans-serif;
     text-align: center;
-    overflow: hidden; /* Prevent scrollbars */
+    overflow: hidden; 
 }
 
 /* Game Container */
@@ -15,25 +15,30 @@ html, body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding-top: 60px; /* Space for header */
+    /* justify-content: center;  Removed this to allow top alignment */
+    padding-top: 150px; /* Increased padding for the displays */
 }
 
 /* Rock Element */
 #rock {
-    width: 700px;
-    height: 700px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
     background-image: url('images/rock.png');
     background-size: cover;
     background-position: center;
     cursor: pointer;
-    transition: width 0.3s, height 0.3s; /* Smooth scaling */
+    transition: transform 0.1s ease-in-out; /* For the wobble effect */
+    transform-origin: 50% 50%; /* To prevent shifting during wobble */
 }
 
 /* Sparkle Animation */
 .sparkle {
     position: absolute;
-    top: 40%; /* Centered on the rock */
+    top: 50%; 
     left: 50%;
     transform: translate(-50%, -50%);
     width: 80px;
@@ -43,23 +48,8 @@ html, body {
     opacity: 0;
 }
 
-/* Different Sparkle Levels */
-.sparkle-level-1 {
-    background-image: url('images/gold-sparkle.png'); 
-}
-.sparkle-level-2 {
-    background-image: url('images/blue-sparkle.jpeg'); 
-}
-.sparkle-level-3 {
-    background-image: url('images/red-sparkle.jpeg'); 
-}
-
 /* Sparkle Keyframes */
-@keyframes sparkle {
-    0% { opacity: 0.2; }
-    50% { opacity: 0.8; }
-    100% { opacity: 0.2; }
-}
+
 
 /* Header */
 h1 {
@@ -68,27 +58,43 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
     margin-bottom: 20px;
-    font-size: 24px; /* Adjusted for mobile */
+    font-size: 24px; 
     color: #333;
+    z-index: 10; /* Ensure it's above other elements */
 }
 
 /* Gold and Points Display */
 #gold-and-points-display {
     position: absolute;
-    top: 20%; /* Adjust this value to position it above the rock */
+    top: 170px;  
     left: 50%;
-    transform: translateX(-50%); /* Centering horizontally */
+    transform: translateX(-50%); 
     z-index: 10;
     background-color: rgba(255, 255, 255, 0.8);
     padding: 5px 10px;
     border-radius: 5px;
-    text-align: center; /* Center text */
-    width: 80%; /* Scales better on small screens */
+    text-align: center; 
+    width: 80%; 
     max-width: 300px;
 }
 
+#gold-and-points-display img {
+    width: 32px; 
+    vertical-align: middle; 
+    margin-right: 5px; 
+}
 
- 
+/* Daily Limit Display */
+#daily-limit-display {
+  position: absolute;
+  top: 60%;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
 /* Paragraph Styling */
 p {
     margin-bottom: 10px;
@@ -106,9 +112,10 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 90%; /* Full width on mobile */
+    width: 90%; 
     max-width: 300px;
     transition: background-color 0.3s;
+    z-index: 10; /* Ensure buttons are above other elements */
 }
 
 button:hover {
@@ -120,37 +127,29 @@ button:hover {
     position: absolute;
     bottom: 10px;
     left: 10px;
-    width: 45%; /* Share space with withdraw button */
+    width: 45%; 
 }
+
 #withdraw {
     position: absolute;
     bottom: 10px;
     right: 10px;
-    width: 45%; /* Share space with upgrade button */
+    width: 45%; 
 }
 
-/* Media Queries for Mobile Screens */
-@media (max-width: 600px) {
-    h1 {
-        font-size: 20px; /* Smaller font on mobile */
-    }
+/* Pickaxe Display */
+#pickaxe-display {
+  position: absolute;
+  top: 70px; 
+  left: 10px; 
+  z-index: 10; 
+  background-color: rgba(47, 247, 3, 0.8); 
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 5px;
+}
 
-    p {
-        font-size: 16px;
-    }
-
-    #rock {
-        width: 200px; /* Smaller rock */
-        height: 200px;
-    }
-
-    .sparkle {
-        width: 60px; /* Smaller sparkles */
-        height: 60px;
-    }
-
-    #gold-and-points-display {
-        font-size: 16px;
-        top: 80px; /* Adjusted for smaller screens */
-    }
+#pickaxe-image {
+  width: 50px; 
+  height: 50px; 
 }

@@ -34,7 +34,7 @@ loginForm.addEventListener('submit', (e) => {
     signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user; // Get the signed-in user
-            window.location.href = "../Home_page/home_page.html"; // Redirect to home page
+            window.location.href = "../mining_game/mining_game.html"; // Redirect to home page
         })
         .catch((error) => {
             const errorMessage = error.message;
@@ -50,7 +50,7 @@ googleSignInButton.addEventListener('click', (e) => {
     signInWithPopup(auth, googleProvider)
         .then((result) => {
             const user = result.user; // Get the signed-in user
-            window.location.href = "../Home_page/home_page.html"; // Redirect to home page
+            window.location.href = "../mining_game/mining_game.html"; // Redirect to home page
         })
         .catch((error) => {
             const errorMessage = error.message;
